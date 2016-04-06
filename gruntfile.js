@@ -15,8 +15,14 @@ module.exports = function(grunt) {
         files: {
           'public/js/script.js': ['source_js/script.js'],
           'public/js/app.js': ['source_js/app.js'],
-          'public/js/controllers.js': ['source_js/controllers.js'],
-          'public/js/services.js': ['source_js/services.js'],
+          'public/js/controllers.js': [
+            'source_js/controllers/controllers.js',
+            'source_js/controllers/llamalist.js'
+          ],
+          'public/js/services.js': [
+            'source_js/services/services.js',
+            'source_js/services/llamaservice.js'
+          ],
         } //files
       } //my_target
     }, //uglify
@@ -46,12 +52,12 @@ module.exports = function(grunt) {
     watch: {
       options: { livereload: true },
       scripts: {
-        files: ['source_js/*.js'],
+        files: ['source_js/*.js', 'source_js/controllers/*.js', 'source_js/services/*.js'],
         tasks: ['clean','uglify'],
         //tasks: ['copy']
       }, //script
       sass: {
-        files: ['source_sass/*.scss'],
+        files: ['source_sass/*.scss', 'source_sass/partials/*.scss'],
         tasks: ['compass:dev','compass:foundation']
       }, //sass
       sass_foundation: {
