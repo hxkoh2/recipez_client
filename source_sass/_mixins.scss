@@ -1,1 +1,6 @@
 // Insert your mixins
+@mixin fit-content {
+	width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+}

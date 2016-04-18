@@ -1,4 +1,4 @@
-angular.module('mp4Services').factory('Llamas', function($http, $window) {
+angular.module('RecipEZServices').factory('Llamas', function($http, $window) {
     return {
         get : function() {
             var baseUrl = $window.sessionStorage.baseurl;

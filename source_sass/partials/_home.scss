@@ -1,0 +1,29 @@
+.home {
+	height: 100vh;
+	h1 {
+		font-weight: 500;
+		font-size: 5em;
+		color: $primary-color;
+		text-align: center;
+		@include breakpoint(small only){
+			font-size: 4em;
+		}
+	}
+
+	h3 {
+		color: gray;
+		text-align: center;
+	}
+
+	div {
+		@include fit-content;
+	}
+
+	i {
+		color: gray;
+		bottom: 5%;
+		left: 50%;
+		transform: translateX(-50%);
+		position: absolute;
+	}
+}

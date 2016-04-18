@@ -17,7 +17,8 @@ module.exports = function(grunt) {
           'public/js/app.js': ['source_js/app.js'],
           'public/js/controllers.js': [
             'source_js/controllers/controllers.js',
-            'source_js/controllers/llamalist.js'
+            'source_js/controllers/home.js',
+            'source_js/controllers/search.js'
           ],
           'public/js/services.js': [
             'source_js/services/services.js',

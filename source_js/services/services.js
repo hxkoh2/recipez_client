@@ -1,2 +1,2 @@
-var mp4Services = angular.module('mp4Services', []);
+var RecipEZServices = angular.module('RecipEZServices', []);
 

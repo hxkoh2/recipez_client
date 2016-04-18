@@ -1,1 +1,69 @@
 // Add any custom Sass & CSS here
+@import url(https://fonts.googleapis.com/css?family=Cutive|Montserrat);
+
+h1 {
+	font-family: $primary-font;
+}
+
+h3 {
+	font-family: $secondary-font;
+}
+
+.center {
+	top: 50%;
+	transform: translate(-50%, -50%);
+	left:50%;
+	position: absolute;
+}
+
+.logo {
+	display: inline-block;	
+	width: 40px;
+	height: 40px;
+
+}
+ 
+.nav {
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+}
+
+.top-bar {
+	font-family: $secondary-font;
+	.top-bar-left {
+		.search {
+			width: 300px;
+		}
+	}
+	.top-bar-right {
+		li {
+			padding: 0px 10px;
+		}
+	}
+	@include breakpoint(small only) {
+		display: none;
+	}
+}
+
+#logo-anchor {
+	padding: 0px;
+}
+
+.slicknav_menu {
+	display: none;
+	top: 0;
+	width: 100%;
+	background: $light-blue;
+	@include breakpoint(small only) {
+		display: block;
+	}
+}
+
+.slicknav_nav {
+	background-color: $light-blue;
+}
+
+#small-nav {
+	display:none;
+}
