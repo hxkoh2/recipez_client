@@ -10,6 +10,14 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/search.html',
     controller: 'SearchController'
   }).
+  when('/login', {
+    templateUrl: 'partials/login.html',
+    controller: 'LoginController'
+  }).
+  when('/signup', {
+    templateUrl: 'partials/signup.html',
+    controller: 'SignUpController'
+  }).
   otherwise({
     redirectTo: '/home'
   });
