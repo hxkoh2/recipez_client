@@ -1,7 +1,9 @@
 .settings-page {
-	margin: 20px 0 0 20px;
-}
-
-.settings-h1 {
-	color: $primary-color;
+	margin: 0 0 0 20px;
+	h1 {
+		color: $primary-color;
+	}
+	form {
+		/*width: 40%;*/
+	}
 }
