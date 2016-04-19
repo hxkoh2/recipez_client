@@ -18,6 +18,10 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/signup.html',
     controller: 'SignUpController'
   }).
+  when('/settings', {
+    templateUrl: 'partials/settings.html',
+    controller: 'SettingsController'
+  }).
   otherwise({
     redirectTo: '/home'
   });
