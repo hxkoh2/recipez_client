@@ -31,7 +31,7 @@
         <div class="top-bar-left">
             <ul class="menu">
                 <li><a id="logo-anchor" href="#/search"><img class="logo" src="./data/logo.png"/></a></li>
-                <li><form ng-submit="redirect()"><input class="search" type="search" ng-model="fields.query" placeholder="Search"></form></li>
+                <li><form id="nav-search" ng-submit="redirect()"><input class="search" type="search" ng-model="fields.query" placeholder="Search"></form></li>
             </ul>
         </div>
         <div class="top-bar-right">
@@ -42,8 +42,10 @@
         </div>
     </div>
     <div class="content-top"></div>
+    <div class="search-dropdown" id="search-recommendations"ng-controller="NavController">
+        <div ng-repeat="recommendation in recommendations" class="recommendation" ng-click="redirectRecommendation(recommendation)">{{recommendation}}</div>
+    </div>
     <div class="content" ng-view></div>
-
     <!-- Scripts -->
     <script src="./lib/jquery-2.1.3.min/index.js"></script>
     <script src="./lib/slicknav/dist/jquery.slicknav.min.js"></script>
