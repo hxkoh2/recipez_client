@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/search.html',
     controller: 'SearchController'
   }).
+  when('/recipes/:recipeid', {
+    templateUrl: 'partials/recipe.html',
+    controller: 'RecipeController'
+  }).
   when('/test', {
     templateUrl: 'partials/test.html'
   }).
