@@ -21,11 +21,13 @@ module.exports = function(grunt) {
             'source_js/controllers/search.js',
             'source_js/controllers/login.js',
             'source_js/controllers/signup.js',
-            'source_js/controllers/settings.js'
+            'source_js/controllers/settings.js',
+            'source_js/controllers/profile.js'
           ],
           'public/js/services.js': [
             'source_js/services/services.js',
-            'source_js/services/llamaservice.js'
+            'source_js/services/llamaservice.js',
+            'source_js/services/auth.js'
           ],
         } //files
       } //my_target

@@ -1,19 +1,19 @@
-<br><br><br>
-<div class="settings-page center">
+<div class="settings-page center" ng-controller="SettingsController">
 	<form name="settingsForm" ng-model="settingsForm" class="loginForm">
 		<h1 class="settings-h1">Settings</h1>
-		<input type="text" placeholder="Name" required>
-		<input type="text" placeholder="Username" required>
-		<input type="email" placeholder="Email" required>
+		<input type="text" placeholder="Name" ng-model="name" required>
+		<input type="text" placeholder="Username" ng-model="username" required>
+		<input type="email" placeholder="Email" ng-model="email" required>
 		<label>Interests
-  		<select multiple>
+  		<select multiple ng-model="interests">
     		<option value="husker">Husker</option>
     		<option value="starbuck">Starbuck</option>
     		<option value="hotdog">Hot Dog</option>
     		<option value="apollo">Apollo</option>
   			</select>
 		</label>
-		<button class="button" onClick="settingsForm.$valid && editUser()">Save</button><br>
+		<button class="button" ng-click="settingsForm.$valid && editUser()">Save</button><br>
 		<a href="/#/home">Reset Password</a>
+		{{isloggedin}}
 	</form>
 </div>

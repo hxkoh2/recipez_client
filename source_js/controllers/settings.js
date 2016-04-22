@@ -1,5 +1,16 @@
-angular.module('RecipEZControllers').controller('SettingsController', ['$scope', '$http', '$window' , function($scope, $http, $window) {
+angular.module('RecipEZControllers').controller('SettingsController', ['$scope', '$http', '$window', 'auth', function ($scope, $http, $window, auth) {
+
+	$scope.isloggedin = auth.isLoggedIn();
+
+
 	$scope.editUser = function () {
-		console.log("edit user function");
+		var name = $scope.name;
+		var username = $scope.username;
+		var email = $scope.email;
+		var interests = $scope.interests;
+
+		auth.logout();
+
+		//ajax update
 	};
 }]);

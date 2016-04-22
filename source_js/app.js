@@ -1,6 +1,6 @@
 var app = angular.module('mp4', ['ngRoute', 'RecipEZControllers', 'RecipEZServices']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.
     when('/home', {
     templateUrl: 'partials/home.html',
@@ -12,15 +12,35 @@ app.config(['$routeProvider', function($routeProvider) {
   }).
   when('/login', {
     templateUrl: 'partials/login.html',
-    controller: 'LoginController'
+    controller: 'LoginController',
+    resolve: ['$location', 'auth', function ($location, auth) {
+      if(auth.isLoggedIn())
+        $location.path('/home');
+    }]
   }).
   when('/signup', {
     templateUrl: 'partials/signup.html',
-    controller: 'SignUpController'
+    controller: 'SignUpController',
+    resolve: ['$location', 'auth', function ($location, auth) {
+      if(auth.isLoggedIn())
+        $location.path('/home');
+    }]
   }).
   when('/settings', {
     templateUrl: 'partials/settings.html',
-    controller: 'SettingsController'
+    controller: 'SettingsController',
+    resolve: ['$location', 'auth', function ($location, auth) {
+      if(!auth.isLoggedIn())
+        $location.path('/login');
+    }]
+  }).
+  when('/profile', {
+    templateUrl: 'partials/profile.html',
+    controller: 'ProfileController',
+    resolve: ['$location', 'auth', function ($location, auth) {
+      if(!auth.isLoggedIn())
+        $location.path('/login');
+    }]
   }).
   otherwise({
     redirectTo: '/home'
