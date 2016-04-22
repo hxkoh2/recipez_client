@@ -1,8 +1,12 @@
 angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '$http', '$window', '$location', 'auth', function ($scope, $http, $window, $location, auth) {
 
 	$scope.user = {};
+	$scope.errorMsgShow = false;
+	$scope.errorMsg = "An error has occurred."
 
 	$scope.signUp = function () {
+		$scope.hideErrorMsg();
+
 		$scope.user.name = $scope.name;
 		$scope.user.email = $scope.email;
 		$scope.user.password = $scope.password;
@@ -14,12 +18,17 @@ angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '
 			$location.path('/home');
 			$window.location.reload();
 		}).error(function (response) {
-			console.log("error signing up");
-			console.log(response);
-			//show error message
+			$scope.errorMsg = response.message;
+			$scope.showErrorMsg();
 		});
-
-
-		//$location.path('/home');
 	};
+
+	$scope.showErrorMsg = function () {
+		$scope.errorMsgShow = true;
+	};
+
+	$scope.hideErrorMsg = function () {
+		$scope.errorMsgShow = false;
+	};
+
 }]);

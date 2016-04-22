@@ -7,6 +7,9 @@
     	<button class="button" ng-click="loginForm.$valid && login()">Submit</button>
     	<br>
     	<a href="/#/signup">Don't have an account? Sign up!</a>
+        <div class="errorMsg" ng-show="errorMsgShow">
+            <p>{{errorMsg}}</p>
+        </div>
     </form>
   </div>
 </div>
