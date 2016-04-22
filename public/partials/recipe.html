@@ -1,0 +1,76 @@
+<div class="recipe" ng-controller='RecipeController'>
+	<div class="recipe-container">
+		<div class="row">
+			<div class="recipe-img columns large-4">
+				<img ng-src="{{recipe.image}}">
+			</div>
+			<div class="recipe-info columns large-8">
+				<h1>{{recipe.name}}</h1>
+				<div class="info">
+					<span class="fa fa-star" ng-repeat="i in score"></span><span> | </span><span><a>Save</a></span><span> | </span><span><a>{{reviewCount}} reviews</a></span><span> | </span><span><a>Write a Review</a></span>
+					<p>{{recipe.description}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-4 small-12 columns">
+				<h2>Ingredients</h2>
+				<ul>
+					<li ng-repeat="ingredient in recipe.ingredients">
+					<span>{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="large-8 small-12 columns">
+				<h2>Directions</h2>
+				<div class="d-list">
+					<ol>
+						<li ng-repeat="step in recipe.directions">{{step}}</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+<!-- 
+		<div class="row ingredients">
+			<h2>Ingredients</h2>
+			<ul>
+				<li ng-repeat="ingredient in recipe.ingredients">
+				<span>{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}</span>
+				</li>
+			</ul>
+		</div>
+		<div class="row directions">
+			<h2>Directions</h2>
+			<ol>
+				<li ng-repeat="step in recipe.directions">{{step}}</li>
+			</ol>
+		</div> -->
+		<div class="row reviews">
+			<h2>Reviews</h2>
+			<span ng-click="showForm=true" class="button add-button">Add Review</span>
+			<!-- <a href="" ng-click="showForm=true">Add Review</a> -->
+			<div class="write-review" ng-show="showForm">
+				<h4>Add a Review!</h4>
+        		<form ng-submit="addReview()">
+            		<label>Rating<span style="color:red">*</span></label>
+            		<input type="radio" ng-model="rating" value=1/>1 
+            		<input type="radio" ng-model="rating" value=2/>2 
+            		<input type="radio" ng-model="rating" value=3/>3 
+            		<input type="radio" ng-model="rating" value=4/>4 
+            		<input type="radio" ng-model="rating" value=5/>5 
+
+            		
+            		<textarea tng-model="content" placeholder="Review Content"></textarea>
+
+            		<button class="small button" type="submit">Add Review</button>
+        		</form>
+			</div>
+			<div class="review" ng-repeat="review in recipe.reviews">
+				<h4>{{review.username}}</h4>
+				<span>{{review.rating}} </span><span class="fa fa-star">'s</span>
+				<div>{{review.content}}</div>
+			</div>
+		</div>
+	</div>
+</div>
