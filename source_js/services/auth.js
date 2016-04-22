@@ -39,6 +39,10 @@ angular.module('RecipEZServices').factory('auth', ['$http', '$window', '$locatio
     	$window.localStorage.removeItem('recipez-token');
     };
 
+    auth.updateUser = function (user) {
+        return $http.put('http://localhost:4000/api/users/' + user._id, user);
+    };
+
     return auth;
 
 }]);
