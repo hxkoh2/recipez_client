@@ -1,6 +1,20 @@
 // Add any custom Sass & CSS here
 @import url(https://fonts.googleapis.com/css?family=Cutive|Montserrat);
 
+.content {
+	padding-top: 10px;
+	@include breakpoint(small only){
+		padding-top: 0px;
+	}
+}
+
+.content-top {
+	height: 56px;
+	@include breakpoint(small only){
+		display: none;
+	}
+}
+
 h1 {
 	font-family: $primary-font;
 }
@@ -27,6 +41,8 @@ h3 {
 	position: fixed;
 	z-index: 10;
 	width: 100%;
+	top: 0;
+	height: 56px;
 }
 
 .top-bar {
@@ -40,6 +56,11 @@ h3 {
 		li {
 			padding: 0px 10px;
 		}
+	}
+	.top-bar-left, .top-bar-right {
+		top: 50%;
+		transform: translateY(-50%);
+		position: relative;
 	}
 	@include breakpoint(small only) {
 		display: none;
@@ -66,4 +87,30 @@ h3 {
 
 #small-nav {
 	display:none;
+}
+
+body {
+	font-family: $secondary-font;
+}
+
+.recommendation {
+	font-weight: 100;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	cursor: pointer; 
+}
+
+.recommendation:hover {
+	background-color: rgba($light-blue, 0.4);
+}
+
+.search-dropdown {
+	display: none;
+	width: 300px;
+	position: fixed;
+	z-index: 10;
+	border: 1px solid gray;
+	background-color: white;
+	padding: 10px;
 }

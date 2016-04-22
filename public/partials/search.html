@@ -1,4 +1,35 @@
 <div class="search">
-	<input id="search" type="search" placeholder="Search">
-	<button class="button"><i class="fa fa-filter" aria-hidden="true"></i></button>
+	<form>
+		<input id="search" type="search" placeholder="Search"><!--
+		--><button type="button" class="button float-right" data-toggle="filters-dropdown"><i class="fa fa-filter"></i></button>
+		<div class="dropdown-pane bottom dropdown" id="filters-dropdown" data-dropdown data-close-on-click="true">
+			<h3>Filters</h3>
+			<div class="row column" ng-repeat="tag in tags">
+				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
+			</div>
+		</div>
+	</form>		  
+	<div class="row">
+		<div class="medium-3 large-2 hide-for-small-only columns">
+			<div class="row column">
+				<h3>Filters</h3>
+			</div>
+			<div class="row column" ng-repeat="tag in tags">
+				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
+			</div>
+		</div>
+		<div class="small-12 medium-9 large-10 columns">
+			<div class="row">
+				<div class="small-up-2 medium-up-3 large-up-5">
+					<div ng-repeat="recipe in filteredRecipes" class="column">
+						<div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+							<div class="darken box">
+								<span class="text-center">{{recipe.name}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

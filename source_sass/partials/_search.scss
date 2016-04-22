@@ -11,4 +11,48 @@
 		width: 10%;
 		vertical-align: top;
 	}
+
+	form {
+		display:none;
+		@include breakpoint(small only){
+			display: block;
+		}
+	}
+
+	h3 {
+		color: $primary-color;
+	}
+
+	.box {
+		width: 180px;
+		height: 180px;
+		position: relative;
+	}
+
+	.recipe-box {
+		background-size: 180px 180px;
+		background-repeat: no-repeat;
+		margin-bottom: 10px;
+	}
+
+	.darken {
+		background-color: rgba(black, 0.5);
+	}
+
+	span {
+		color: white;
+		font-weight: bold;
+		top: 50%;
+		transform: translateY(-50%);
+		font-family: $secondary-font;
+		position: absolute;
+		width: 180px;
+	}
+
+	.dropdown {
+		display: block;
+		width: 100%;
+		border: 0px;
+		background-color: rgba(white, 0.9);
+	}
 }
