@@ -39,8 +39,10 @@
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><a href="#/login" style="color:inherit">Login</a></li>
-                <li><a href="#/signup" style="color:inherit">Sign Up</a></li>
+                <li><a href="#/login" style="color:inherit" ng-hide="userLoggedIn">Login</a></li>
+                <li><a href="#/signup" style="color:inherit" ng-hide="userLoggedIn">Sign Up</a></li>
+                <li><a href="#/profile" style="color:inherit" ng-show="userLoggedIn">{{user.name}}</a></li>
+                <li><a href="#/logout" style="color:inherit" ng-show="userLoggedIn" ng-click="logout()">Log Out</a></li>
             </ul>
         </div>
     </div>

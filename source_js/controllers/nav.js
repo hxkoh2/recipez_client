@@ -1,4 +1,15 @@
-angular.module('RecipEZControllers').controller('NavController', ['$scope', '$rootScope' ,'$http', '$window', '$location', 'Search', '$filter', function($scope, $rootScope, $http, $window, $location, Search, $filter) {
+angular.module('RecipEZControllers').controller('NavController', ['$scope', '$rootScope' ,'$http', '$window', '$location', 'Search', '$filter', 'auth', function ($scope, $rootScope, $http, $window, $location, Search, $filter, auth) {
+
+	$scope.userLoggedIn = auth.isLoggedIn();
+	$scope.user = auth.currentUser();
+	$scope.logout = function () {
+		auth.logout();
+		$location.path('/home');
+		$window.location.reload();
+	};
+
+
+
 	$rootScope.fields = {
 		query: ""
 	};
@@ -37,4 +48,6 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 	}
 
 	$scope.$watch('fields.query', $scope.recommend, true);
+
+
 }]);

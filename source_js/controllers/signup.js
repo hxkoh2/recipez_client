@@ -10,10 +10,9 @@ angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '
 		//console.log(auth);
 
 		auth.signup($scope.user).success(function (response) {
-			console.log("signed up");
-			console.log(response);
 			auth.setToken(response.token);
-			//$location.path('/home');
+			$location.path('/home');
+			$window.location.reload();
 		}).error(function (response) {
 			console.log("error signing up");
 			console.log(response);

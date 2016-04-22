@@ -1,4 +1,4 @@
-angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$http', '$window', 'auth', function ($scope, $http, $window, auth) {
+angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$http', '$window', '$location', 'auth', function ($scope, $http, $window, $location, auth) {
 	
 	$scope.user = {};
 
@@ -9,11 +9,9 @@ angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$
 
 
 		auth.login($scope.user).success(function (response) {
-			console.log("logged in");
-			console.log(response);
 			auth.setToken(response.token);
-			console.log(auth.getToken());
-			//$location.path('/home');
+			$location.path('/home');
+			$window.location.reload();
 		}).error(function (response) {
 			console.log("error while loggin in");
 			console.log(response);
