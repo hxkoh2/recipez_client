@@ -20,11 +20,7 @@ module.exports = function(grunt) {
             'source_js/controllers/nav.js',
             'source_js/controllers/home.js',
             'source_js/controllers/search.js',
-            'source_js/controllers/recipe.js'
-          ],
-          'public/js/services.js': [
-            'source_js/services/services.js',
-            'source_js/services/searchservice.js'
+            'source_js/controllers/recipe.js',
             'source_js/controllers/login.js',
             'source_js/controllers/signup.js',
             'source_js/controllers/settings.js',
@@ -32,9 +28,10 @@ module.exports = function(grunt) {
           ],
           'public/js/services.js': [
             'source_js/services/services.js',
-            'source_js/services/llamaservice.js',
-            'source_js/services/auth.js'
-          ],
+            'source_js/services/auth.js',
+            'source_js/services/searchservice.js',
+            
+          ]
         } //files
       } //my_target
     }, //uglify
