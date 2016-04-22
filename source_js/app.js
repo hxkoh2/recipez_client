@@ -1,4 +1,4 @@
-var app = angular.module('mp4', ['ngRoute', 'RecipEZControllers', 'RecipEZServices']);
+var app = angular.module('RecipEZ', ['ngRoute', 'RecipEZControllers', 'RecipEZServices', 'checklist-model']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -13,6 +13,9 @@ app.config(['$routeProvider', function($routeProvider) {
   when('/recipes/:recipeid', {
     templateUrl: 'partials/recipe.html',
     controller: 'RecipeController'
+  }).
+  when('/test', {
+    templateUrl: 'partials/test.html'
   }).
   otherwise({
     redirectTo: '/home'
