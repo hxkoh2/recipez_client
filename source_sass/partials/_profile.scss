@@ -1,0 +1,56 @@
+.profile {
+	h3 {
+		font-family: $primary-font;
+		color: $primary-color;
+	}
+
+	#recommended-recipes {
+		background-color: #EDEDEA;
+		height: fit-content;
+	}
+
+	.slick-prev:before, .slick-next:before {
+		font-size: 30px;
+	}
+
+	slick {
+		width: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.box {
+		width: 180px;
+		height: 180px;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.recipe-box {
+		background-size: 180px 180px;
+		background-repeat: no-repeat;
+		margin-bottom: 10px;
+	}
+
+	.darken {
+		background-color: rgba(black, 0.5);
+	}
+
+	span {
+		color: white;
+		font-weight: bold;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-family: $secondary-font;
+		position: absolute;
+		width: 180px;
+	}
+
+	#add-recipe {
+		background: $light-blue;
+		margin-bottom: 20px;
+		padding: 5px;
+	}
+}

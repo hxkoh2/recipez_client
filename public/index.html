@@ -8,7 +8,6 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="./lib/slicknav/dist/slicknav.css" />
-
     <link rel="stylesheet" href="./lib/slick-carousel/slick/slick.css"/>
     <link rel="stylesheet" href="./lib/slick-carousel/slick/slick-theme.css" />
     <link rel="stylesheet" href="./css/styles.css">
@@ -23,14 +22,18 @@
 </head>
 
 <body ng-app="RecipEZ">
+    <div ng-controller="NavController">
     <div id="small-nav">
         <ul>
-            <li>Login</li>
-            <li>Sign Up</li>
-            <li>Search</li>
+            <li><a href="#/login" style="color:inherit" ng-hide="fields.userLoggedIn">Login</a></li>
+            <li><a href="#/signup" style="color:inherit" ng-hide="fields.userLoggedIn">Sign Up</a></li>
+            <li><a href="#/search" style="color:inherit">Search</a></li>
+            <li><a href="#/profile" style="color:inherit" ng-show="fields.userLoggedIn">Profile</a></li>
+            <li><a href="#/settings" style="color:inherit" ng-show="fields.userLoggedIn" ng-click="blah()">Settings</a></li>
+            <li><a style="color:inherit" ng-show="fields.userLoggedIn" ng-click="logout2()">Log Out</a></li>
         </ul>
     </div>
-    <div class="top-bar nav" id="nav" ng-controller="NavController">
+    <div class="top-bar nav" id="nav">
         <div class="top-bar-left">
             <ul class="menu">
                 <li><a id="logo-anchor" href="#/search"><img class="logo" src="./data/logo.png"/></a></li>
@@ -39,25 +42,26 @@
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><a href="#/login" style="color:inherit" ng-hide="userLoggedIn">Login</a></li>
-                <li><a href="#/signup" style="color:inherit" ng-hide="userLoggedIn">Sign Up</a></li>
-                <li><a href="#/profile" style="color:inherit" ng-show="userLoggedIn">{{user.name}}</a></li>
-                <li><a href="#/settings" style="color:inherit" ng-show="userLoggedIn">Settings</a></li>
-                <li><a href="#/logout" style="color:inherit" ng-show="userLoggedIn" ng-click="logout()">Log Out</a></li>
+                <li><a href="#/login" style="color:inherit" ng-hide="fields.userLoggedIn">Login</a></li>
+                <li><a href="#/signup" style="color:inherit" ng-hide="fields.userLoggedIn">Sign Up</a></li>
+                <li><a href="#/profile" style="color:inherit" ng-show="fields.userLoggedIn">{{user.name}}</a></li>
+                <li><a href="#/settings" style="color:inherit" ng-show="fields.userLoggedIn">Settings</a></li>
+                <li><a style="color:inherit" ng-show="fields.userLoggedIn" ng-click="logout()">Log Out</a></li>
             </ul>
         </div>
     </div>
-    
+    </div>
     <div class="content-top"></div>
     <div class="search-dropdown" id="search-recommendations"ng-controller="NavController">
         <div ng-repeat="recommendation in recommendations" class="recommendation" ng-click="redirectRecommendation(recommendation)">{{recommendation}}</div>
     </div>
-    <div class="content" ng-view></div>
+    <div ng-view></div>
     <!-- Scripts -->
     <script src="./lib/jquery-2.1.3.min/index.js"></script>
     <script src="./lib/slicknav/dist/jquery.slicknav.min.js"></script>
     <script src='./lib/checklist-model/checklist-model.js'></script>
     <script src="./lib/slick-carousel/slick/slick.min.js"></script>
+    <script src="./lib/angular-slick/dist/slick.min.js"></script>
     <script src="./foundation6_lib/js/foundation.min.js"></script>
     <script src="./js/script.js"></script>
     <script>

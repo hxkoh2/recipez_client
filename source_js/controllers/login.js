@@ -1,4 +1,4 @@
-angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$http', '$window', '$location', 'auth', function ($scope, $http, $window, $location, auth) {
+angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$http', '$window', '$location', 'auth', '$rootScope', function ($scope, $http, $window, $location, auth, $rootScope) {
 	
 	$scope.user = {};
 	$scope.errorMsgShow = false;
@@ -10,8 +10,8 @@ angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$
 
 		auth.login($scope.user).success(function (response) {
 			auth.setToken(response.token);
-			$location.path('/home');
-			$window.location.reload();
+			$location.path('/profile');
+			$rootScope.fields.userLoggedIn = auth.isLoggedIn();
 		}).error(function (response) {
 			$scope.errorMsg = response.message;
 			$scope.showErrorMsg();

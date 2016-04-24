@@ -1,9 +1,10 @@
-<div class="search">
+<div class="search content">
 	<form>
 		<input id="search" type="search" placeholder="Search" ng-model="fields.query"><!--
 		--><button type="button" class="button float-right" data-toggle="filters-dropdown"><i class="fa fa-filter"></i></button>
 		<div class="dropdown-pane bottom dropdown" id="filters-dropdown" data-dropdown data-close-on-click="true">
 			<h3>Filters</h3>
+			<h5>Category</h5>
 			<div class="row column" ng-repeat="tag in tags">
 				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
 			</div>
@@ -14,6 +15,7 @@
 			<div class="row column">
 				<h3>Filters</h3>
 			</div>
+			<h5>Category</h5>
 			<div class="row column" ng-repeat="tag in tags">
 				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
 			</div>
@@ -22,11 +24,11 @@
 			<div class="row">
 				<div class="small-up-2 medium-up-3 large-up-5">
 					<div ng-repeat="recipe in filteredRecipes" class="column">
-						<div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+						<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
 							<div class="darken box">
 								<span class="text-center">{{recipe.name}}</span>
 							</div>
-						</div>
+						</div></a>
 					</div>
 				</div>
 			</div>

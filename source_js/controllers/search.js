@@ -3,7 +3,9 @@ angular.module('RecipEZControllers').controller('SearchController', ['$scope', '
 	$scope.queriedRecipes = []
 	$scope.filteredRecipes = [];
 	$scope.tags = ['American', 'Italian', 'Chinese', 'Japanese', 'Thai', 'Indian', 'Mexican', 'Other'];
+	$scope.times = ['0 - 30 mins', '30 mins - 1 hr', 'Over 1 hr'];
 	$scope.selectedTags = [];
+	$scope.selectedTimes = [];
 	$scope.small = ($window.innerWidth < 640);
 
 	$(document).foundation();
@@ -38,6 +40,15 @@ angular.module('RecipEZControllers').controller('SearchController', ['$scope', '
 		else {
 			$scope.queriedRecipes = $filter('filter')($scope.recipes, $rootScope.fields.query);
 			$scope.filterRecipes();
+		}
+	}
+
+	$scope.filterRecipesTime = function() {
+		if($scope.selectedTimes.length === 0){
+			$scope.filteredRecipes = $scope.queriedRecipes;
+		}
+		else {
+			$scope.filteredRecipes = $filter('filter')($scope.queriedRecipes, filterTags);
 		}
 	}
 

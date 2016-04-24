@@ -1,12 +1,50 @@
-<br><br><br>
-<div ng-controller="ProfileController">
-	
-	<div class="carousel">
-		<div>blah</div>
-		<div>blah</div>
-		<div>blah</div>
+<div class="profile">
+	<div class="text-center" id="recommended-recipes">
+		<h3 class="text-center content">Recommended Recipes</h3>
+		<div class="column row">
+			<h4 ng-show="recommendedRecipes.length == 0">There are no recommended recipes at this time.</h4>
+			<slick dots=true infinite=true speed=300 slides-to-show=3 slides-to-scroll=3 arrows=true ng-if="recommendedRecipes.length" 
+			responsive="[
+			    {
+			      breakpoint: 1024,
+			      settings: {
+			        slidesToShow: 2,
+			        slidesToScroll: 2,
+			        infinite: true,
+			        dots: true
+			      }
+			    },
+			    {
+			      breakpoint: 640,
+			      settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			      }
+			    }]"
+		    >
+				<div ng-repeat="recommendation in recommendedRecipes" class="text-center">
+					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box">
+						<div class="darken box">
+							<span class="text-center">{{recommendation.name}}</span>
+						</div>
+					</div></a>
+				</div>
+			</slick>
+		</div>
 	</div>
-
-	{{user}}
-
+	<div class="text-center">
+		<h3 class="text-center content">My Recipes</h3>
+		<button class="text-center button" id="add-recipe">Add a Recipe</button>
+		<div class="row">
+			<div class="small-up-2 medium-up-4 large-up-6">
+				<div ng-repeat="recipe in myRecipes" class="column">
+					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+						<div class="darken box">
+							<span class="text-center">{{recipe.name}}</span>
+						</div>
+					</div></a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

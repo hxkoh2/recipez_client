@@ -30,7 +30,7 @@ module.exports = function(grunt) {
             'source_js/services/services.js',
             'source_js/services/auth.js',
             'source_js/services/searchservice.js',
-            
+            'source_js/services/profileservice.js'
           ]
         } //files
       } //my_target

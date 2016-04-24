@@ -1,4 +1,4 @@
-var app = angular.module('RecipEZ', ['ngRoute', 'RecipEZControllers', 'RecipEZServices', 'checklist-model']);
+var app = angular.module('RecipEZ', ['ngRoute', 'RecipEZControllers', 'RecipEZServices', 'checklist-model', 'slick']);
 
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.

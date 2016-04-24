@@ -1,17 +1,27 @@
 angular.module('RecipEZControllers').controller('NavController', ['$scope', '$rootScope' ,'$http', '$window', '$location', 'Search', '$filter', 'auth', function ($scope, $rootScope, $http, $window, $location, Search, $filter, auth) {
-
+	$scope.blah = function() {console.log("blah")};
 	$scope.userLoggedIn = auth.isLoggedIn();
 	$scope.user = auth.currentUser();
+
+
 	$scope.logout = function () {
+		console.log("logged out");
+
 		auth.logout();
 		$location.path('/home');
-		$window.location.reload();
+		$rootScope.fields.userLoggedIn = auth.isLoggedIn();
+	};
+	$scope.logout2 = function () {
+		console.log("logged out2");
+
+		//auth.logout();
+		//$location.path('/home');
+		//$rootScope.fields.userLoggedIn = auth.isLoggedIn();
 	};
 
-
-
 	$rootScope.fields = {
-		query: ""
+		query: "",
+		userLoggedIn: auth.isLoggedIn()
 	};
 
 	var offset = $('#nav-search').offset();
