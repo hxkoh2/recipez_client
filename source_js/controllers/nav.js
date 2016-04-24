@@ -3,13 +3,13 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 	$scope.userLoggedIn = auth.isLoggedIn();
 	$scope.user = auth.currentUser();
 
+	console.log($scope.user);
 
 	$scope.logout = function () {
-		console.log("logged out");
-
 		auth.logout();
 		$location.path('/home');
 		$rootScope.fields.userLoggedIn = auth.isLoggedIn();
+		$scope.user = false;
 	};
 	$scope.logout2 = function () {
 		console.log("logged out2");
@@ -59,5 +59,9 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 
 	$scope.$watch('fields.query', $scope.recommend, true);
 
+
+	$scope.$on("login", function () {
+   		$scope.user = auth.currentUser();
+	});
 
 }]);

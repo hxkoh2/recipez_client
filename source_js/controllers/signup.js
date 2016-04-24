@@ -11,11 +11,9 @@ angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '
 		$scope.user.email = $scope.email;
 		$scope.user.password = $scope.password;
 
-		//console.log(auth);
-
 		auth.signup($scope.user).success(function (response) {
 			auth.setToken(response.token);
-			$location.path('/home');
+			$location.path('/profile');
 			$window.location.reload();
 		}).error(function (response) {
 			$scope.errorMsg = response.message;
