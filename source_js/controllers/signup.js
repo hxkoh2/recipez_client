@@ -15,6 +15,7 @@ angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '
 			auth.setToken(response.token);
 			$location.path('/profile');
 			$rootScope.$broadcast("login");
+			
 		}).error(function (response) {
 			$scope.errorMsg = response.message;
 			$scope.showErrorMsg();
