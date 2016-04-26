@@ -1,0 +1,16 @@
+.add-recipe {
+	padding-top: 8px;
+	width: 66%;
+	margin: 0 auto;
+	.left {
+		float: left;
+	}
+	.clear {
+		clear: both;
+	}
+	.add-recipe-btn {
+		background: $light-blue;
+		margin-bottom: 20px;
+		padding: 5px;
+	}
+}

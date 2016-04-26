@@ -1,0 +1,50 @@
+angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope', '$http', '$window' , '$routeParams', '$location', 'auth', function($scope, $http, $window, $routeParams, $location, auth) {
+	$scope.hello = "Hello!"
+	$scope.showErrorMsg = false;
+	$scope.tags = ['American', 'Italian', 'Chinese', 'Japanese', 'Thai', 'Indian', 'Mexican', 'Other']
+	var recipeid = $routeParams.recipeid;
+
+	$http.get("http://localhost:4000/api/recipes/"+recipeid).success(function(res) {
+		$scope.recipe = res.data;
+		$scope.recipe.directions = $scope.recipe.directions.join('\n');
+
+	}).error(function(res) {
+
+	});
+
+	$scope.cantAdd = false;
+
+	$scope.addIngredient = function() {
+		var count = $scope.recipe.ingredients.length;
+		if($scope.recipe.ingredients[count-1].name == '') {
+			$scope.cantAdd = true;
+			$scope.cantAddMsg = "Enter 1 ingredient at a time";
+			return;
+		}
+
+		$scope.recipe.ingredients.push({name: '', unit: '', quantity: null});
+
+	}
+
+
+	$scope.editRecipe = function() {
+		console.log("Time to edit a recipe.");
+		$scope.recipe.directions = $scope.recipe.directions.split('\n')
+		
+		var count = $scope.recipe.ingredients.length;
+		if($scope.recipe.ingredients[count-1].name == '') {
+			$scope.recipe.ingredients.splice(count-1, 1);
+		}
+
+		if($scope.recipe.tags.length == 0)
+			$scope.recipe.tags.push("Other");
+
+		console.log($scope.recipe);
+		// do put request
+		$http.put("http://localhost:4000/api/recipes/"+recipeid, $scope.recipe).success(function(res) {
+			console.log(res);
+
+		});
+		$location.path('/profile');
+	}
+}]);
