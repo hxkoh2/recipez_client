@@ -34,7 +34,8 @@
 	</div>
 	<div class="text-center">
 		<h3 class="text-center content">My Recipes</h3>
-		<button class="text-center button" id="add-recipe">Add a Recipe</button>
+
+		<a href="#/addrecipe" class="text-center button" id="add-recipe">Add a Recipe</a>
 		<div class="row">
 			<div class="small-up-2 medium-up-4 large-up-6">
 				<div ng-repeat="recipe in myRecipes" class="column">
@@ -43,6 +44,10 @@
 							<span class="text-center">{{recipe.name}}</span>
 						</div>
 					</div></a>
+					<a href="#/editrecipe/{{recipe._id}}" class="small button edit-recipe-btn">edit
+					</a>
+					<div ng-click="deleteRecipe(recipe._id)" class="small button edit-recipe-btn">delete
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,41 @@
+<div class="add-recipe">
+	<h1>Edit recipe</h1>
+	<form ng-submit="editRecipe()">
+			<label>Name<span style="color:red">*</span></label>
+	   		<input type="text" ng-model="recipe.name" placeholder="Name" required/>
+	   		<label>Cost ($)<span style="color:red">*</span></label>
+	   		<input type="text" ng-model="recipe.cost" placeholder="x.xx" required/>
+	   		<label>Time (min)<span style="color:red">*</span></label>
+	   		<input type="text" ng-model="recipe.time" placeholder="30" required/>
+
+	   		<label>Image (URL)</label>
+	   		<input type="text" ng-model="recipe.image"/>
+
+	   		<label>Description<span style="color:red">*</span></label>
+	   		<input type="text" ng-model="recipe.description" placeholder="Description" required/>
+
+	   		<label>Ingredients</label>
+	   		<div ng-repeat="ingredient in recipe.ingredients" class="row">
+	   			<div class="left">
+		   		<input type="text" ng-model="ingredient.quantity" placeholder="Quantity"/>
+		   		</div>
+		   		<div class="left">
+		   		<input type="text" ng-model="ingredient.unit" placeholder="Unit"/>
+		   		</div>
+		   		<div class="left">
+		   		<input type="text" ng-model="ingredient.name" placeholder="Type of Ingredient"/>
+		   		</div>
+	   		</div>
+	   		<div class="small button add-recipe-btn" ng-click="addIngredient()">+</div>
+	   		<div>
+	   		<label>Directions (1 per line)<span style="color:red">*</span></label>
+	   		<textarea ng-model="recipe.directions" placeholder="Directions" required></textarea>
+	   		</div>
+	   		<label>Tags
+	  			<select multiple ng-model="recipe.tags">
+	    			<option ng-repeat="tag in tags" ng-selected="{{recipe.tags.indexOf(tag) >= 0}}" value="{{tag}}">{{tag}}</option>
+	  			</select>
+			</label>
+	    	<button class="small button add-recipe-btn" type="submit">Edit Recipe</button>
+	</form>
+</div>

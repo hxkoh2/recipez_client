@@ -23,7 +23,9 @@ module.exports = function(grunt) {
             'source_js/controllers/login.js',
             'source_js/controllers/signup.js',
             'source_js/controllers/settings.js',
-            'source_js/controllers/profile.js'
+            'source_js/controllers/profile.js',
+            'source_js/controllers/addrecipe.js',
+            'source_js/controllers/editrecipe.js'
           ],
           'public/js/services.js': [
             'source_js/services/services.js',

@@ -45,6 +45,14 @@ app.config(['$routeProvider', function ($routeProvider) {
         $location.path('/login');
     }]
   }).
+  when('/addrecipe', {
+    templateUrl: 'partials/addrecipe.html',
+    controller: 'AddRecipeController'
+  }).
+  when('/editrecipe/:recipeid', {
+    templateUrl: 'partials/editrecipe.html',
+    controller: 'EditRecipeController'
+  }).
   otherwise({
     redirectTo: '/home'
   });
