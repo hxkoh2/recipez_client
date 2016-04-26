@@ -25,12 +25,12 @@
     <div ng-controller="NavController">
     <div id="small-nav">
         <ul>
-            <li><a href="#/login" style="color:inherit" ng-hide="fields.userLoggedIn">Login</a></li>
-            <li><a href="#/signup" style="color:inherit" ng-hide="fields.userLoggedIn">Sign Up</a></li>
+            <li><a href="#/login" style="color:inherit" ng-if="!fields.userLoggedIn" ng-click="blah()">Login</a></li>
+            <li><a href="#/signup" style="color:inherit" ng-if="!fields.userLoggedIn">Sign Up</a></li>
             <li><a href="#/search" style="color:inherit">Search</a></li>
-            <li><a href="#/profile" style="color:inherit" ng-show="fields.userLoggedIn">Profile</a></li>
-            <li><a href="#/settings" style="color:inherit" ng-show="fields.userLoggedIn" ng-click="blah()">Settings</a></li>
-            <li><a style="color:inherit" ng-show="fields.userLoggedIn" ng-click="logout2()">Log Out</a></li>
+            <li><a href="#/profile" style="color:inherit" ng-if="fields.userLoggedIn">Profile</a></li>
+            <li><a href="#/settings" style="color:inherit" ng-if="fields.userLoggedIn">Settings</a></li>
+            <li><a style="color:inherit" ng-if="fields.userLoggedIn" onClick="callLogout()">Log Out</a></li>
         </ul>
     </div>
     <div class="top-bar nav" id="nav">
@@ -44,7 +44,7 @@
             <ul class="menu">
                 <li><a href="#/login" style="color:inherit" ng-hide="fields.userLoggedIn">Login</a></li>
                 <li><a href="#/signup" style="color:inherit" ng-hide="fields.userLoggedIn">Sign Up</a></li>
-                <li><a href="#/profile" style="color:inherit" ng-show="fields.userLoggedIn">Profile</a></li>
+                <li><a href="#/profile" style="color:inherit" ng-show="fields.userLoggedIn">{{fields.user.name}}</a></li>
                 <li><a href="#/settings" style="color:inherit" ng-show="fields.userLoggedIn">Settings</a></li>
                 <li><a style="color:inherit" ng-show="fields.userLoggedIn" ng-click="logout()">Log Out</a></li>
             </ul>

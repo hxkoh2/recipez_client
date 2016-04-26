@@ -3,8 +3,7 @@ var app = angular.module('RecipEZ', ['ngRoute', 'RecipEZControllers', 'RecipEZSe
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider.
     when('/home', {
-    templateUrl: 'partials/home.html',
-    controller: 'HomeController'
+    templateUrl: 'partials/home.html'
   }).
   when('/search', {
     templateUrl: 'partials/search.html',

@@ -8,6 +8,14 @@
 			<div class="row column" ng-repeat="tag in tags">
 				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
 			</div>
+			<h5>Time</h5>
+			<div class="row column" ng-repeat="time in times">
+				<input type="checkbox" checklist-model="selectedTimes" checklist-value="time"><label>{{time}}</label>
+			</div>
+			<h5>Cost</h5>
+			<div class="row column" ng-repeat="cost in costs">
+				<input type="checkbox" checklist-model="selectedCosts" checklist-value="cost"><label>{{cost}}</label>
+			</div>
 		</div>
 	</form>		  
 	<div class="row">
@@ -18,6 +26,14 @@
 			<h5>Category</h5>
 			<div class="row column" ng-repeat="tag in tags">
 				<input type="checkbox" checklist-model="selectedTags" checklist-value="tag"><label>{{tag}}</label>
+			</div>
+			<h5>Time</h5>
+			<div class="row column" ng-repeat="time in times">
+				<input type="checkbox" checklist-model="selectedTimes" checklist-value="time"><label>{{time}}</label>
+			</div>
+			<h5>Cost</h5>
+			<div class="row column" ng-repeat="cost in costs">
+				<input type="checkbox" checklist-model="selectedCosts" checklist-value="cost"><label>{{cost}}</label>
 			</div>
 		</div>
 		<div class="small-12 medium-9 large-10 columns">

@@ -13,6 +13,9 @@ angular.module('RecipEZControllers').controller('LoginController', ['$scope', '$
 			$location.path('/profile');
 			$rootScope.fields.userLoggedIn = auth.isLoggedIn();
 			$scope.$broadcast("login");
+			$rootScope.fields.user = auth.currentUser();
+			if($rootScope.fields.small)
+				$window.location.reload();
 		}).error(function (response) {
 			$scope.errorMsg = response.message;
 			$scope.showErrorMsg();
