@@ -10,3 +10,7 @@ $(document).mouseup(function(event){
 		$('.search-dropdown').css('display', 'none');
 	}
 });
+
+function callLogout() {
+	angular.element(document.getElementById('nav')).scope().logout();
+}

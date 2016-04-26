@@ -1,27 +1,17 @@
-angular.module('RecipEZControllers').controller('NavController', ['$scope', '$rootScope' ,'$http', '$window', '$location', 'Search', '$filter', 'auth', function ($scope, $rootScope, $http, $window, $location, Search, $filter, auth) {
-	$scope.blah = function() {console.log("blah")};
-	$scope.userLoggedIn = auth.isLoggedIn();
-	$scope.user = auth.currentUser();
-
+angular.module('RecipEZControllers').controller('NavController', ['$scope', '$rootScope' ,'$http', '$window', '$location', 'Search', '$filter', 'auth', '$route', function ($scope, $rootScope, $http, $window, $location, Search, $filter, auth, $route) {
+	$rootScope.fields = {
+		query: "",
+		userLoggedIn: auth.isLoggedIn(),
+		small: ($window.innerWidth < 640), 
+		user: auth.currentUser()
+	};
 
 	$scope.logout = function () {
-		console.log("logged out");
-
 		auth.logout();
 		$location.path('/home');
 		$rootScope.fields.userLoggedIn = auth.isLoggedIn();
-	};
-	$scope.logout2 = function () {
-		console.log("logged out2");
-
-		//auth.logout();
-		//$location.path('/home');
-		//$rootScope.fields.userLoggedIn = auth.isLoggedIn();
-	};
-
-	$rootScope.fields = {
-		query: "",
-		userLoggedIn: auth.isLoggedIn()
+		if($rootScope.fields.small)
+			$window.location.reload();
 	};
 
 	var offset = $('#nav-search').offset();
@@ -33,6 +23,10 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 		if($rootScope.fields.query.length > 0){
 			$('.search-dropdown').css('display', 'none');
 			$location.path( "/search" );
+			$route.reload();
+		}
+		else if($location.path() === "/search") {
+			$route.reload();
 		}
 	}
 
@@ -40,7 +34,7 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 		if(!($rootScope.fields.query.length > 0)){
 			$('.search-dropdown').css('display', 'none');
 		}
-		else if(!($location.path() === "/search" || $location.path() === "/home")) {
+		else {
 			$('.search-dropdown').css('display', 'block');
 			Search.getRecipes().success(function(data){
 				var recipes = data.data.map(function(recipe){
@@ -57,7 +51,9 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 		$location.path("/search");
 	}
 
+	$(window).resize(function(){
+		$rootScope.fields.small = ($window.innerWidth < 640);
+	});
+
 	$scope.$watch('fields.query', $scope.recommend, true);
-
-
 }]);
