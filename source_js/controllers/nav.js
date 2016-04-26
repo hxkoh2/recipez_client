@@ -10,7 +10,7 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 		auth.logout();
 		$location.path('/home');
 		$rootScope.fields.userLoggedIn = auth.isLoggedIn();
-		$scope.user = false;
+		$rootScope.user = false;
 		if($rootScope.fields.small)
 			$window.location.reload();
 	};
@@ -56,8 +56,11 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 		$rootScope.fields.small = ($window.innerWidth < 640);
 	});
 
-	$scope.$on("login", function () {
-   		$scope.user = auth.currentUser();
+	$rootScope.$on("login", function () {
+		$rootScope.fields.userLoggedIn = auth.isLoggedIn();
+   		$rootScope.fields.user = auth.currentUser();
+   		if($rootScope.fields.small)
+			$window.location.reload();
 	});
 
 	$scope.$watch('fields.query', $scope.recommend, true);

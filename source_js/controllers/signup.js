@@ -14,9 +14,7 @@ angular.module('RecipEZControllers').controller('SignUpController', ['$scope', '
 		auth.signup($scope.user).success(function (response) {
 			auth.setToken(response.token);
 			$location.path('/profile');
-			$rootScope.fields.userLoggedIn = auth.isLoggedIn();
-			if($rootScope.fields.small)
-				$window.location.reload();
+			$rootScope.$broadcast("login");
 		}).error(function (response) {
 			$scope.errorMsg = response.message;
 			$scope.showErrorMsg();
