@@ -23,11 +23,13 @@
 			    }]"
 		    >
 				<div ng-repeat="recommendation in recommendedRecipes" class="text-center">
-					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box">
-						<div class="darken box">
-							<span class="text-center">{{recommendation.name}}</span>
-						</div>
-					</div></a>
+					<div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box">
+						<a ng-href="#/recipes/{{recommendation._id}}">
+							<div class="darken box">
+								<span class="text-center">{{recommendation.name}}</span>
+							</div>
+						</a>
+					</div>
 				</div>
 			</slick>
 		</div>
