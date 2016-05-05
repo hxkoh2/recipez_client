@@ -7,7 +7,7 @@
 			<div class="recipe-info columns large-8">
 				<h1>{{recipe.name}}</h1>
 				<div class="info">
-					<span class="fa fa-star" ng-repeat="i in score"></span><span> | </span><span><a>Save</a></span><span> | </span><span><a>{{reviewCount}} reviews</a></span><span> | </span><span>${{recipe.cost}}</span><span> | </span><span>{{recipe.time}} min</span>
+					<span class="fa fa-star" ng-repeat="i in score"></span><span> | </span><span ng-show="!saved" class="tiny button save-btn" ng-click="saveRecipe()">Save</span><span ng-show="saved" class="tiny button save-btn" ng-click="unsaveRecipe()">Unsave</span><span> | </span><span><a>{{reviewCount}} reviews</a></span><span> | </span><span>${{recipe.cost}}</span><span> | </span><span>{{recipe.time}} min</span>
 					<p>{{recipe.description}}</p>
 				</div>
 			</div>
@@ -22,11 +22,13 @@
 				</ul>
 			</div>
 			<div class="large-8 small-12 columns">
-				<h2>Directions</h2>
-				<div class="d-list">
-					<ol>
-						<li ng-repeat="step in recipe.directions">{{step}}</li>
-					</ol>
+				<div>
+					<h3 class="text-left">Directions</h3>
+					<div class="d-list">
+						<ol class="directions">
+							<li ng-repeat="step in recipe.directions">{{step}}</li>
+						</ol>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -44,8 +46,7 @@
             		<input type="radio" ng-model="rating" value=2>2 
             		<input type="radio" ng-model="rating" value=3>3 
             		<input type="radio" ng-model="rating" value=4>4 
-            		<input type="radio" ng-model="rating" value=5>5 
-
+            		<input type="radio" ng-model="rating" value=5>5
             		
             		<textarea ng-model="content" placeholder="Review Content"></textarea>
             		<div class="text-center" ng-show="showErrorMsg">{{errorMsg}}</div>
@@ -60,3 +61,4 @@
 		</div>
 	</div>
 </div>
+

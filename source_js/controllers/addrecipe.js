@@ -28,6 +28,20 @@ angular.module('RecipEZControllers').controller('AddRecipeController', ['$scope'
 
 	}
 
+	$scope.removeIngredient = function(ingredient) {
+		var ingID = ingredient._id;
+
+		if($scope.recipe.ingredients.length <= 1)
+			return;
+
+		for(var i = 0; i < $scope.recipe.ingredients.length; i++) {
+			if($scope.recipe.ingredients[i]._id == ingID) {
+				$scope.recipe.ingredients.splice(i, 1);
+				break;
+			}
+		}
+	}
+
 
 	$scope.addRecipe = function() {
 		console.log("Time to add a recipe.");
