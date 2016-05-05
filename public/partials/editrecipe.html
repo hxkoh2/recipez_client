@@ -25,12 +25,12 @@
 		   		<div class="left">
 		   		<input type="text" ng-model="ingredient.name" placeholder="Type of Ingredient"/>
 		   		</div>
-		   		<div class="small button add-recipe-btn left" ng-click="removeIngredient(ingredient)">-</div>
+		   		<div class="small button add-recipe-btn left delete-btn" ng-click="removeIngredient(ingredient)">–</div>
 	   		</div>
 	   		<div class="small button add-recipe-btn" ng-click="addIngredient()">+</div>
 	   		<div>
 	   		<label>Directions (1 per line)<span style="color:red">*</span></label>
-	   		<textarea ng-model="recipe.directions" placeholder="Directions" required></textarea>
+	   		<textarea rows="6" ng-model="recipe.directions" placeholder="Directions" required></textarea>
 	   		</div>
 	   		<label>Tags
 	  			<select multiple ng-model="recipe.tags">

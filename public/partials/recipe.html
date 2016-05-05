@@ -35,7 +35,7 @@
 
 		<div class="row reviews text-center">
 			<h2>Reviews ({{reviewCount}})</h2>
-			<button class="text-center button" id="add-review" ng-click="showForm=true">Write a Review!</button>
+			<button class="text-center button add-review" ng-click="showForm=true">Write a Review!</button>
 		
 			<!-- <a href="" ng-click="showForm=true">Add Review</a> -->
 			<div class="write-review" ng-show="showForm">
@@ -50,7 +50,7 @@
             		
             		<textarea rows="5" ng-model="content" placeholder="Review Content"></textarea>
             		<div class="text-center" ng-show="showErrorMsg">{{errorMsg}}</div>
-            		<button class="small button" type="submit">Add Review</button>
+            		<button class="small button add-review" type="submit">Add Review</button>
         		</form>
 			</div>
 			<div class="review" ng-repeat="review in recipe.reviews">

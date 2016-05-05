@@ -1,4 +1,4 @@
-angular.module('RecipEZControllers').controller('AddRecipeController', ['$scope', '$http', '$window' , '$routeParams', '$location', 'auth', function($scope, $http, $window, $routeParams, $location, auth) {
+angular.module('RecipEZControllers').controller('AddRecipeController', ['$scope', '$http', '$window' , '$routeParams', '$location', 'auth', '$route', function($scope, $http, $window, $routeParams, $location, auth, $route) {
 	$scope.hello = "Hello!"
 	$scope.showErrorMsg = false;
 	$scope.tags = ['American', 'Italian', 'Chinese', 'Japanese', 'Thai', 'Indian', 'Mexican', 'Other']
@@ -65,11 +65,13 @@ angular.module('RecipEZControllers').controller('AddRecipeController', ['$scope'
 
 			auth.updateUser($scope.user).success(function (response) {
 				auth.setToken(response.token);
+				$location.path('/profile');
+				$route.reload();
 				$scope.errorMsg = response.message;
 			}).error(function (response) {
 				$scope.errorMsg = response.message;
 			});
+
 		});
-		$location.path('/profile');
 	}
 }]);
