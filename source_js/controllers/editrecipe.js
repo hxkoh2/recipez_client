@@ -1,4 +1,4 @@
-angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope', '$http', '$window' , '$routeParams', '$location', 'auth', function($scope, $http, $window, $routeParams, $location, auth) {
+angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope', '$http', '$window' , '$routeParams', '$location', 'auth', '$route', function($scope, $http, $window, $routeParams, $location, auth, $route) {
 	$scope.hello = "Hello!"
 	$scope.showErrorMsg = false;
 	$scope.tags = ['American', 'Italian', 'Chinese', 'Japanese', 'Thai', 'Indian', 'Mexican', 'Other']
@@ -60,8 +60,8 @@ angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope
 		// do put request
 		$http.put("http://localhost:4000/api/recipes/"+recipeid, $scope.recipe).success(function(res) {
 			console.log(res);
-
+			$location.path('/profile');
+			$route.reload();
 		});
-		$location.path('/profile');
 	}
 }]);
