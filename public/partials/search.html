@@ -1,6 +1,6 @@
 <div class="search content">
 	<form>
-		<input id="search" type="search" placeholder="Search" ng-model="fields.query"><!--
+		<input type="search" id="search" placeholder="Search" ng-model="fields.query"><!--
 		--><button type="button" class="button float-right" data-toggle="filters-dropdown"><i class="fa fa-filter"></i></button>
 		<div class="dropdown-pane bottom dropdown" id="filters-dropdown" data-dropdown data-close-on-click="true">
 			<h3>Filters</h3>
@@ -19,7 +19,7 @@
 		</div>
 	</form>		  
 	<div class="row">
-		<div class="medium-3 large-2 hide-for-small-only columns">
+		<div class="medium-3 large-2 hide-for-small-only columns" id="filters">
 			<div class="row column">
 				<h3>Filters</h3>
 			</div>
@@ -40,13 +40,17 @@
 			<div class="row">
 				<div class="small-up-2 medium-up-3 large-up-5">
 					<div ng-repeat="recipe in filteredRecipes" class="column">
-						<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+						<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 							<div class="darken box">
-								<span class="text-center">{{recipe.name}}</span>
+								<span class="text-center" ng-hide="hover">{{recipe.name}}</span>
+								<span class="text-center" ng-show="hover">{{recipe.time}} mins</span>
 							</div>
 						</div></a>
 					</div>
 				</div>
+			</div>
+			<div class="row column text-center">
+				<button class="hollow button load" ng-click="load()">Load More</button>
 			</div>
 		</div>
 	</div>

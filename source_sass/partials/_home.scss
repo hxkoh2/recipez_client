@@ -1,5 +1,9 @@
 .home {
 	height: calc(100vh - 56px);
+	background-image: url("https://media1.popsugar-assets.com/files/2015/08/07/682/n/1922398/45b0d0df_shutterstock_134817824.xxxlarge_2x.jpg");
+	background-size: 100% calc(100vh - 56px);
+    background-repeat: no-repeat;
+
 	h1 {
 		font-weight: 500;
 		font-size: 5em;
@@ -11,7 +15,7 @@
 	}
 
 	h3 {
-		color: gray;
+		color: #3B3B3A;
 		text-align: center;
 	}
 
@@ -20,10 +24,17 @@
 	}
 
 	i {
-		color: gray;
+		color: rgba(white, 0.6);
 		bottom: 5%;
 		left: 50%;
 		transform: translateX(-50%);
 		position: absolute;
+	}
+
+	#title {
+		background-color: rgba(white, 0.6);
+		padding: 20px;
+		width: 45%;
+		border-radius: 15px;
 	}
 }
