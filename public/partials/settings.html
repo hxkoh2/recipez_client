@@ -1,12 +1,19 @@
-<div class="settings-page center" ng-controller="SettingsController">
-	<form name="settingsForm" ng-model="settingsForm" class="loginForm">
+<div class="settings-page" ng-controller="SettingsController">
+	<form name="settingsForm" ng-model="settingsForm" class="settings-form">
 		<h1 class="settings-h1">Settings</h1>
 		<input type="text" placeholder="Name" ng-model="user.name" required>
 		<input type="email" placeholder="Email" ng-model="user.email" required>
-		<label>Interests
+		<!-- <label>Interests
   			<select multiple ng-model="user.tags">
     			<option ng-repeat="tag in tags" ng-selected="{{user.tags.indexOf(tag) >= 0}}" value="{{tag}}">{{tag}}</option>
   			</select>
+		</label> -->
+		<label>Interests
+			<ul>
+				<li ng-repeat="tag in tags">
+					<input type="checkbox" ng-checked="{{user.tags.indexOf(tag) >= 0}}" value="{{tag}}" ng-click="clickedItem(tag)">{{tag}}</input>
+				</li>
+			</ul>
 		</label>
 		<button class="button" ng-click="settingsForm.$valid && editUser()">Save</button><br>
 		<a href="/#/home">Reset Password</a>

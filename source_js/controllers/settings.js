@@ -11,6 +11,7 @@ angular.module('RecipEZControllers').controller('SettingsController', ['$scope',
 		$scope.user.name;
 		$scope.user.email;
 		$scope.user.tags;
+		console.log($scope.user.tags);
 		
 		auth.updateUser($scope.user).success(function (response) {
 			auth.setToken(response.token);
@@ -29,5 +30,18 @@ angular.module('RecipEZControllers').controller('SettingsController', ['$scope',
 	$scope.hideErrorMsg = function () {
 		$scope.errorMsgShow = false;
 	};
+
+	$scope.clickedItem = function(tag) {
+        var index = $scope.user.tags.indexOf(tag);
+        if (index > -1) {
+            $scope.user.tags.splice(index, 1);
+        }
+
+        // is newly selected
+        else {
+            $scope.user.tags.push(tag);
+        }
+    };
+
 
 }]);
