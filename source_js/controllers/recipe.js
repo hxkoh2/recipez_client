@@ -60,6 +60,7 @@ angular.module('RecipEZControllers').controller('RecipeController', ['$scope', '
 				$scope.recipe = res.data;
 				console.log(res);
 				$scope.reviewCount = $scope.recipe.reviews.length;
+				$scope.showForm = false;
 			}).error(function(res) {
 				console.log(res);
 			});

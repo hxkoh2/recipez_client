@@ -4,7 +4,7 @@
 			<div class="recipe-img columns large-4">
 				<img ng-src="{{recipe.image}}">
 			</div>
-			<div class="recipe-info columns large-8">
+			<div class="recipe-info columns large-8 text-center">
 				<h1>{{recipe.name}}</h1>
 				<div class="info">
 					<span class="fa fa-star" ng-repeat="i in score"></span><span> | </span><span ng-show="!saved" class="tiny button save-btn" ng-click="saveRecipe()">Save</span><span ng-show="saved" class="tiny button save-btn" ng-click="unsaveRecipe()">Unsave</span><span> | </span><span><a>{{reviewCount}} reviews</a></span><span> | </span><span>${{recipe.cost}}</span><span> | </span><span>{{recipe.time}} min</span>
@@ -48,7 +48,7 @@
             		<input type="radio" ng-model="rating" value=4>4 
             		<input type="radio" ng-model="rating" value=5>5
             		
-            		<textarea ng-model="content" placeholder="Review Content"></textarea>
+            		<textarea rows="5" ng-model="content" placeholder="Review Content"></textarea>
             		<div class="text-center" ng-show="showErrorMsg">{{errorMsg}}</div>
             		<button class="small button" type="submit">Add Review</button>
         		</form>
