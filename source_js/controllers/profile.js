@@ -10,7 +10,7 @@ angular.module('RecipEZControllers').controller('ProfileController', ['$scope', 
 				$scope.myRecipes = data2.data;
 			});
 
-			Profile.queryRecipes("{_id: {$in:" + JSON.stringify(user.data.saves) + "}}").success(function(data3){
+			Profile.queryRecipes("where={_id: {$in:" + JSON.stringify(user.data.saves) + "}}").success(function(data3){
 				$scope.savedRecipes = data3.data;
 			});
 
@@ -27,7 +27,7 @@ angular.module('RecipEZControllers').controller('ProfileController', ['$scope', 
 		this.hover = false;
 	}
 
-	$scope.deleteRecipe = function(recipeid) {
+	$scope.deleteRecipe = function(recipeid, idx) {
 
 		$http.delete("http://localhost:4000/api/recipes/"+recipeid).success(function(res) {
 			console.log(res);
@@ -39,13 +39,13 @@ angular.module('RecipEZControllers').controller('ProfileController', ['$scope', 
 			}
 
 			auth.updateUser($scope.user).success(function() {
-				$scope.getProfile();
+				$scope.myRecipes.splice(idx,1);
 			})
 
 		});
 	}
 
-	$scope.unsaveRecipe = function(recipeid) {
+	$scope.unsaveRecipe = function(recipeid, idx) {
 		if(!(auth.isLoggedIn())) {
 			return;
 		}
@@ -58,7 +58,7 @@ angular.module('RecipEZControllers').controller('ProfileController', ['$scope', 
 
 		auth.updateUser($scope.user).success(function(data) {
 			auth.setToken(data.token);
-			$scope.getProfile();
+			$scope.savedRecipes.splice(idx,1);
 			return;
 		})
 
