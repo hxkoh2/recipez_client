@@ -8,17 +8,27 @@ angular.module('RecipEZControllers').controller('SearchController', ['$scope', '
 	$scope.selectedTags = [];
 	$scope.selectedTimes = [];
 	$scope.selectedCosts = [];
+	$scope.limit = 15;
 
 	$(document).foundation();
 
+	if($(window).width() < 640) {
+		var offset = $('#search').offset();
+		var height = $('#search').outerHeight();
+		console.log(offset.top);
+		console.log(height);
+		$('.search-dropdown').css('top', offset.top + height);
+		$('.search-dropdown').css('left', offset.left);
+	}
+
 	$scope.filter = function() {
 		if($rootScope.fields.query.length == 0 && $scope.selectedTimes.length == 0 && $scope.selectedTags.length == 0 && $scope.selectedCosts.length == 0) {
-			Search.getRecipes().success(function(data){
+			Profile.queryRecipes("limit=" + $scope.limit).success(function(data){
 				$scope.filteredRecipes = data.data;
 			});
 		}
 		else { 
-			var query = "{$and: [";
+			var query = "where={$and: [";
 			if($rootScope.fields.query.length > 0)
 				query += "{name:{$regex:/" + $rootScope.fields.query + "/i}},";
 			if($scope.selectedTags.length>0)
@@ -50,13 +60,29 @@ angular.module('RecipEZControllers').controller('SearchController', ['$scope', '
 				query += "]},";
 			}
 			query = query.substring(0, query.length-1);
-			query += "]}";
+			query += "]}&limit" + $scope.limit;
 			Profile.queryRecipes(query).success(function(data){
 				$scope.filteredRecipes = data.data;
 			});
 		}
 	}
 	$scope.filter();
+
+	$scope.hoverIn = function() {
+		this.hover = true;
+	}
+
+	$scope.hoverOut = function() {
+		this.hover = false;
+	}
+
+	$scope.load = function() {
+		if($scope.filteredRecipes.length >= $scope.limit) {
+			$scope.limit += 15;
+			$scope.filter();
+			console.log($scope.limit);
+		}
+	}
 
 	$scope.$watch('selectedTags', $scope.filter, true);
 	$scope.$watch('selectedTimes', $scope.filter, true);

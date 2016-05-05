@@ -3,7 +3,7 @@
 		<h3 class="text-center content">Recommended Recipes</h3>
 		<div class="column row">
 			<h4 ng-show="recommendedRecipes.length == 0">There are no recommended recipes at this time.</h4>
-			<slick dots=true infinite=true speed=300 slides-to-show=3 slides-to-scroll=3 arrows=true ng-if="recommendedRecipes.length" 
+			<slick id="carousel" dots=true infinite=true speed=300 slides-to-show=3 slides-to-scroll=3 arrows=true ng-if="recommendedRecipes.length" 
 			responsive="[
 			    {
 			      breakpoint: 1024,
@@ -22,49 +22,49 @@
 			      }
 			    }]"
 		    >
-				<div ng-repeat="recommendation in recommendedRecipes" class="text-center">
-					<div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box">
-						<a ng-href="#/recipes/{{recommendation._id}}">
-							<div class="darken box">
-								<span class="text-center">{{recommendation.name}}</span>
-							</div>
-						</a>
-					</div>
+				<div class="carousel-slide" ng-repeat="recommendation in recommendedRecipes" class="text-center">
+					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+						<div class="darken box">
+							<span class="text-center" ng-hide="hover">{{recommendation.name}}</span>
+							<span class="text-center" ng-show="hover">{{recommendation.time}} mins</span>
+						</div>
+					</div></a>
 				</div>
 			</slick>
 		</div>
 	</div>
 	<div class="text-center">
 		<h3 class="text-center content">Pinned Recipes</h3>
+		<h4 ng-show="savedRecipes.length == 0">You have no pinned recipes.</h4>
 		<div class="row">
 			<div class="small-up-2 medium-up-4 large-up-6">
-				<div ng-repeat="recipe in savedRecipes" class="column">
-					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+				<div ng-repeat="savedrecipe in savedRecipes" class="column">
+					<a ng-href="#/recipes/{{savedrecipe._id}}"><div ng-style="{'background-image':'url({{savedrecipe.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 						<div class="darken box">
-							<span class="text-center">{{recipe.name}}</span>
+							<span class="text-center" ng-hide="hover">{{savedrecipe.name}}</span>
+							<span class="text-center" ng-show="hover">{{savedrecipe.time}} mins</span>
 						</div>
 					</div></a>
-					<div ng-click="unsaveRecipe(recipe._id)" class="small button edit-recipe-btn">unsave
-					</div>
+					<div ng-click="unsaveRecipe(savedrecipe._id, $index)" class="small button edit-recipe-btn">unsave</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="text-center">
 		<h3 class="text-center content">My Recipes</h3>
-
 		<a href="#/addrecipe" class="text-center button" id="add-recipe">Add a Recipe</a>
 		<div class="row">
 			<div class="small-up-2 medium-up-4 large-up-6">
 				<div ng-repeat="recipe in myRecipes" class="column">
-					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 						<div class="darken box">
-							<span class="text-center">{{recipe.name}}</span>
+							<span class="text-center" ng-hide="hover">{{recipe.name}}</span>
+							<span class="text-center" ng-show="hover">{{recipe.time}} mins</span>
 						</div>
 					</div></a>
 					<a href="#/editrecipe/{{recipe._id}}" class="small button edit-recipe-btn">edit
 					</a>
-					<div ng-click="deleteRecipe(recipe._id)" class="small button edit-recipe-btn">delete
+					<div ng-click="deleteRecipe(recipe._id, $index)" class="small button edit-recipe-btn">delete
 					</div>
 				</div>
 			</div>
