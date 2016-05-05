@@ -23,9 +23,10 @@
 			    }]"
 		    >
 				<div ng-repeat="recommendation in recommendedRecipes" class="text-center">
-					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box">
+					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 						<div class="darken box">
-							<span class="text-center">{{recommendation.name}}</span>
+							<span class="text-center" ng-hide="hover">{{recommendation.name}}</span>
+							<span class="text-center" ng-show="hover">{{recommendation.time}} mins</span>
 						</div>
 					</div></a>
 				</div>
@@ -39,9 +40,10 @@
 		<div class="row">
 			<div class="small-up-2 medium-up-4 large-up-6">
 				<div ng-repeat="recipe in myRecipes" class="column">
-					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 						<div class="darken box">
-							<span class="text-center">{{recipe.name}}</span>
+							<span class="text-center" ng-hide="hover">{{recipe.name}}</span>
+							<span class="text-center" ng-show="hover">{{recipe.time}} mins</span>
 						</div>
 					</div></a>
 					<a href="#/editrecipe/{{recipe._id}}" class="small button edit-recipe-btn">edit

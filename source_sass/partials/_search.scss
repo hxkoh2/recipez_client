@@ -55,4 +55,18 @@
 		border: 0px;
 		background-color: rgba(white, 0.9);
 	}
+
+	.time {
+		display: none;
+	}
+
+	.load {
+		color: $light-blue;
+		border-color: $light-blue;
+		margin-bottom: 10px;
+	}
+
+	#filters {
+		position: fixed;
+	}
 }

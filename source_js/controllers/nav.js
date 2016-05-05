@@ -16,15 +16,15 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 	};
 
 	var offset = $('#nav-search').offset();
-	var height = $('#nav-search').height();
+	var height = $('#nav-search').outerHeight();
 	$('.search-dropdown').css('top', offset.top + height);
 	$('.search-dropdown').css('left', offset.left);
 
 	$scope.redirect = function() {
 		if($rootScope.fields.query.length > 0){
-			$('.search-dropdown').css('display', 'none');
 			$location.path( "/search" );
 			$route.reload();
+			$('.search-dropdown').css('display', 'none');
 		}
 		else if($location.path() === "/search") {
 			$route.reload();
@@ -48,8 +48,7 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 
 	$scope.redirectRecommendation = function(recommendation) {
 		$rootScope.fields.query = recommendation;
-		$('.search-dropdown').css('display', 'none');
-		$location.path("/search");
+		$scope.redirect();
 	}
 
 	$(window).resize(function(){
