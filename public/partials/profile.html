@@ -35,6 +35,22 @@
 		</div>
 	</div>
 	<div class="text-center">
+		<h3 class="text-center content">Pinned Recipes</h3>
+		<div class="row">
+			<div class="small-up-2 medium-up-4 large-up-6">
+				<div ng-repeat="recipe in savedRecipes" class="column">
+					<a ng-href="#/recipes/{{recipe._id}}"><div ng-style="{'background-image':'url({{recipe.image}})'}" class="recipe-box box">
+						<div class="darken box">
+							<span class="text-center">{{recipe.name}}</span>
+						</div>
+					</div></a>
+					<div ng-click="unsaveRecipe(recipe._id)" class="small button edit-recipe-btn">unsave
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="text-center">
 		<h3 class="text-center content">My Recipes</h3>
 
 		<a href="#/addrecipe" class="text-center button" id="add-recipe">Add a Recipe</a>
