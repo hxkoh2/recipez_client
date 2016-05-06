@@ -50,7 +50,7 @@
 				</div>
 			</div>
 			<div class="row column text-center">
-				<button class="hollow button load" ng-click="load()">Load More</button>
+				<button class="hollow button load" ng-click="load()" ng-show="filteredRecipes.length >= limit">Load More</button>
 			</div>
 		</div>
 	</div>

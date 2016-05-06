@@ -23,12 +23,14 @@
 			    }]"
 		    >
 				<div class="carousel-slide" ng-repeat="recommendation in recommendedRecipes" class="text-center">
-					<a ng-href="#/recipes/{{recommendation._id}}"><div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-						<div class="darken box">
-							<span class="text-center" ng-hide="hover">{{recommendation.name}}</span>
-							<span class="text-center" ng-show="hover">{{recommendation.time}} mins</span>
-						</div>
-					</div></a>
+					<div ng-style="{'background-image':'url({{recommendation.image}})'}" class="recipe-box box" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+						<a ng-href="#/recipes/{{recommendation._id}}">
+							<div class="darken box">
+								<span class="text-center" ng-hide="hover">{{recommendation.name}}</span>
+								<span class="text-center" ng-show="hover">{{recommendation.time}} mins</span>
+							</div>
+						</a>
+					</div>
 				</div>
 			</slick>
 		</div>
