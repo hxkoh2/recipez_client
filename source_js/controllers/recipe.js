@@ -2,7 +2,7 @@ angular.module('RecipEZControllers').controller('RecipeController', ['$scope', '
 	$scope.hello = "Hey there";
 	var recipeid = $routeParams.recipeid;
 	// var test_review = {username: "Lucas Ung", rating: 4, content: "This recipe was wonderful! I would make it again in a hearbeat, except next time, I'll make sure to put less water because it was a litle mushy. Kraft Mac n Cheese is the best stuff in the world"};
-	$http.get('http://localhost:4000/api/recipes/'+recipeid).success(function(res) {
+	$http.get('http://162.243.0.11:4000/api/recipes/'+recipeid).success(function(res) {
 		console.log(res.message);
 		$scope.recipe = res.data;
 		$scope.showForm = false;
@@ -56,7 +56,7 @@ angular.module('RecipEZControllers').controller('RecipeController', ['$scope', '
 			console.log($scope.user);
 			$scope.recipe.reviews.push(newReview);
 
-			$http.put('http://localhost:4000/api/recipes/'+recipeid, $scope.recipe).success(function(res) {
+			$http.put('http://162.243.0.11:4000/api/recipes/'+recipeid, $scope.recipe).success(function(res) {
 				$scope.recipe = res.data;
 				console.log(res);
 				$scope.reviewCount = $scope.recipe.reviews.length;

@@ -4,7 +4,7 @@ angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope
 	$scope.tags = ['American', 'Italian', 'Chinese', 'Japanese', 'Thai', 'Indian', 'Mexican', 'Other']
 	var recipeid = $routeParams.recipeid;
 
-	$http.get("http://localhost:4000/api/recipes/"+recipeid).success(function(res) {
+	$http.get("http://162.243.0.11:4000/api/recipes/"+recipeid).success(function(res) {
 		$scope.recipe = res.data;
 		$scope.recipe.directions = $scope.recipe.directions.join('\n');
 
@@ -58,7 +58,7 @@ angular.module('RecipEZControllers').controller('EditRecipeController', ['$scope
 
 		console.log($scope.recipe);
 		// do put request
-		$http.put("http://localhost:4000/api/recipes/"+recipeid, $scope.recipe).success(function(res) {
+		$http.put("http://162.243.0.11:4000/api/recipes/"+recipeid, $scope.recipe).success(function(res) {
 			console.log(res);
 			$location.path('/profile');
 			$route.reload();
