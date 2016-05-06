@@ -29,7 +29,7 @@ angular.module('RecipEZControllers').controller('ProfileController', ['$scope', 
 
 	$scope.deleteRecipe = function(recipeid, idx) {
 
-		$http.delete("http://localhost:4000/api/recipes/"+recipeid).success(function(res) {
+		$http.delete("http://162.243.0.11:4000/api/recipes/"+recipeid).success(function(res) {
 			console.log(res);
 			$scope.user = auth.currentUser();
 

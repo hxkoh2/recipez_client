@@ -58,7 +58,7 @@ angular.module('RecipEZControllers').controller('AddRecipeController', ['$scope'
 
 		console.log($scope.recipe);
 		//do post request and users put request on success
-		$http.post("http://localhost:4000/api/recipes", $scope.recipe).success(function(res) {
+		$http.post("http://162.243.0.11:4000/api/recipes", $scope.recipe).success(function(res) {
 			console.log(res);
 			$scope.user = auth.currentUser();
 			$scope.user.recipes.push(res.data._id)

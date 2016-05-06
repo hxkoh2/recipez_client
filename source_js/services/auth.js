@@ -28,11 +28,11 @@ angular.module('RecipEZServices').factory('auth', ['$http', '$window', '$locatio
     };
 
     auth.signup = function (user) {
-    	return $http.post('http://localhost:4000/api/users', user);
+    	return $http.post('http://162.243.0.11:4000/api/users', user);
     };
 
     auth.login = function (user) {
-    	return $http.post('http://localhost:4000/api/login', user);
+    	return $http.post('http://162.243.0.11:4000/api/login', user);
     };
 
     auth.logout = function (user) {
@@ -40,7 +40,7 @@ angular.module('RecipEZServices').factory('auth', ['$http', '$window', '$locatio
     };
 
     auth.updateUser = function (user) {
-        return $http.put('http://localhost:4000/api/users/' + user._id, user);
+        return $http.put('http://162.243.0.11:4000/api/users/' + user._id, user);
     };
 
     return auth;
