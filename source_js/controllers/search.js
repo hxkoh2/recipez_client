@@ -1,4 +1,4 @@
-angular.module('RecipEZControllers').controller('SearchController', ['$scope', '$rootScope', '$http', '$window', 'Search', '$filter', 'Profile', function($scope,  $rootScope, $http, $window, Search, $filter, Profile) {
+angular.module('RecipEZControllers').controller('SearchController', ['$scope', '$rootScope', '$http', '$window', 'Search', '$filter', 'Profile', '$route', function($scope,  $rootScope, $http, $window, Search, $filter, Profile, $route) {
 	$scope.recipes = [];
 	$scope.queriedRecipes = []
 	$scope.filteredRecipes = [];
@@ -19,6 +19,14 @@ angular.module('RecipEZControllers').controller('SearchController', ['$scope', '
 		console.log(height);
 		$('.search-dropdown').css('top', offset.top + height);
 		$('.search-dropdown').css('left', offset.left);
+	}
+
+	$scope.redirect = function() {
+		console.log("here");
+		//if($rootScope.fields.query.length > 0){
+			$route.reload();
+			$('.search-dropdown').css('display', 'none');
+		//}
 	}
 
 	$scope.filter = function() {

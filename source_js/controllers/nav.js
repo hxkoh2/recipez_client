@@ -27,6 +27,7 @@ angular.module('RecipEZControllers').controller('NavController', ['$scope', '$ro
 			$('.search-dropdown').css('display', 'none');
 		}
 		else if($location.path() === "/search") {
+			$('.search-dropdown').css('display', 'none');
 			$route.reload();
 		}
 	}

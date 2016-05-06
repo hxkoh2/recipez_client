@@ -36,5 +36,8 @@
 		padding: 20px;
 		width: 45%;
 		border-radius: 15px;
+		@include breakpoint(medium down){
+			width: 90%;
+		}
 	}
 }
